@@ -12,9 +12,10 @@ import { environment } from 'src/environments/environment';
 import { SignupComponent } from './features/signup/signup.component';
 import { SigninComponent } from './features/signin/signin.component';
 import { FormsModule } from '@angular/forms';
+import { ProfileComponent } from './features/profile/profile.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent, SignupComponent, SigninComponent],
+  declarations: [AppComponent, HeaderComponent, HomeComponent, SignupComponent, SigninComponent, ProfileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

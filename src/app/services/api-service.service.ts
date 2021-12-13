@@ -11,7 +11,7 @@ export class ApiServiceService {
 
   constructor(private http: HttpClient, private authService: AuthService) {
     this.authService.loggedInUser().subscribe((user) => {
-      this.user = user?.uid
+      this.user = user?.uid;
     });
   }
 
@@ -22,10 +22,17 @@ export class ApiServiceService {
   }
 
   saveJoke(joke: JokeModel) {
-    this.http.post<JokeModel>(`https://dad-jokester-default-rtdb.firebaseio.com/${this.user}/jokes.json`,
-    joke
+    this.http
+      .post<JokeModel>(
+        `https://dad-jokester-default-rtdb.firebaseio.com/${this.user}/jokes.json`,
+        joke
+      )
+      .subscribe();
+  }
+
+  getFavoriteJokes() {
+    return this.http.get<JokeModel>(
+      `https://dad-jokester-default-rtdb.firebaseio.com/${this.user}/jokes.json`
     );
-    console.log(this.user)
-    console.log(joke)
   }
 }
