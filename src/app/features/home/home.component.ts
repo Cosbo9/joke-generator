@@ -31,7 +31,6 @@ export class HomeComponent implements OnInit {
   }
 
   onSaveJoke(joke: JokeModel) {
-    console.log(joke)
     this.api.saveJoke(joke);
     alert('Joke added to favorites list!')
   }
