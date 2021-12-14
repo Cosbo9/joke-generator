@@ -22,17 +22,27 @@ export class ApiServiceService {
   }
 
   saveJoke(joke: JokeModel) {
+    console.log('in api service ' + joke.id)
     this.http
       .post<JokeModel>(
-        `https://dad-jokester-default-rtdb.firebaseio.com/${this.user}/jokes.json`,
+        `https://dad-jokester-default-rtdb.firebaseio.com/${this.user}.json`,
         joke
       )
-      .subscribe();
+      .subscribe(data => {
+        console.log(data)
+      });
   }
 
   getFavoriteJokes() {
     return this.http.get<JokeModel[]>(
-      `https://dad-jokester-default-rtdb.firebaseio.com/${this.user}/jokes.json`
+      `https://dad-jokester-default-rtdb.firebaseio.com/${this.user}.json`
+    );
+  }
+
+  deleteJoke(delJoke: string) {
+    console.log(delJoke)
+    return this.http.delete<string>(
+      `https://dad-jokester-default-rtdb.firebaseio.com/${this.user}/${delJoke}.json`
     )
   }
 }

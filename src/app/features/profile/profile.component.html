@@ -3,8 +3,15 @@
     <h3 *ngIf="User">Hello, {{ User.email }}!</h3>
     <hr />
     <h5>Your favorite jokes!</h5>
-    <ul class="list-group" *ngFor="let joke of favoriteJokes">
-      <li class="list-group-item">{{ joke.joke }}</li>
+    <ul class="list-group" *ngFor="let joke of favoriteJokes; let i = index">
+      <li class="list-group-item">
+        {{ joke.joke }}
+        <i
+          style="float: right; cursor: pointer; color: rgba(255, 0, 0, 0.685)"
+          (click)="onDelete(i)"
+          >X</i
+        >
+      </li>
     </ul>
   </div>
 </div>

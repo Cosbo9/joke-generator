@@ -8,6 +8,7 @@ import { HeaderComponent } from './features/header/header.component';
 import { HomeComponent } from './features/home/home.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from 'src/environments/environment';
 import { SignupComponent } from './features/signup/signup.component';
 import { SigninComponent } from './features/signin/signin.component';
@@ -15,7 +16,14 @@ import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './features/profile/profile.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, HomeComponent, SignupComponent, SigninComponent, ProfileComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    HomeComponent,
+    SignupComponent,
+    SigninComponent,
+    ProfileComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,6 +31,7 @@ import { ProfileComponent } from './features/profile/profile.component';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

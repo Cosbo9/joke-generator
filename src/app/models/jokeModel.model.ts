@@ -1,5 +1,5 @@
 export class JokeModel {
-  id?: string;
+  id!: string;
   joke?: string;
   uid?: string;
 }
