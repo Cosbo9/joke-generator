@@ -31,8 +31,8 @@ export class ApiServiceService {
   }
 
   getFavoriteJokes() {
-    return this.http.get<JokeModel>(
+    return this.http.get<JokeModel[]>(
       `https://dad-jokester-default-rtdb.firebaseio.com/${this.user}/jokes.json`
-    );
+    )
   }
 }

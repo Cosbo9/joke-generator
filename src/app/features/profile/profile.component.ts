@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  favoriteJokes?: JokeModel;
+  favoriteJokes?: JokeModel[] = [];
   User: any;
 
   constructor(
@@ -23,9 +23,10 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.favoriteJokes);
     this.apiService.getFavoriteJokes().subscribe((data) => {
-      console.log(data);
+      Object.values(data).map((joke) => {
+        this.favoriteJokes?.push(joke);
+      });
     });
   }
 }
