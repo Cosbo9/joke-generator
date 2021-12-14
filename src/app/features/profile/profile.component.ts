@@ -21,18 +21,15 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.authService.loggedInUser().subscribe((data) => {
       this.User = data;
-    });
-    this.onRefresh();
-  }
 
-  onRefresh() {
-    this.apiService.getFavoriteJokes().subscribe((data) => {
-      if (!this.refreshed) {
-        Object.values(data).map((joke) => {
-          this.favoriteJokes?.push(joke);
-        });
-        this.refreshed = !this.refreshed
-      }
+      this.apiService.getFavoriteJokes().subscribe((data) => {
+        if (!this.refreshed) {
+          Object.values(data).map((joke) => {
+            this.favoriteJokes?.push(joke);
+          });
+          this.refreshed = !this.refreshed;
+        }
+      });
     });
   }
 }
