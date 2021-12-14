@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 import { JokeModel } from 'src/app/models/jokeModel.model';
-import { flatten } from '@angular/compiler';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -33,5 +32,6 @@ export class HomeComponent implements OnInit {
 
   onSaveJoke(joke: JokeModel) {
     this.api.saveJoke(joke);
+    alert('Joke added to favorites list!')
   }
 }

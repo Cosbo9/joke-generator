@@ -1,4 +1,15 @@
-<p>{{ User.email }}</p>
-<ul *ngFor="let joke of favoriteJokes">
-  <li>{{ joke.joke }}</li>
-</ul>
+<div class="container">
+  <div class="row">
+    <h3 *ngIf="User">Hello, {{ User.email }}!</h3>
+    <hr />
+    <h5>Your favorite jokes!</h5>
+    <div>
+      <button class="btn btn-primary" (click)="onRefresh()">
+        Refresh favorites list
+      </button>
+    </div>
+    <ul class="list-group" *ngFor="let joke of favoriteJokes">
+      <li class="list-group-item">{{ joke.joke }}</li>
+    </ul>
+  </div>
+</div>

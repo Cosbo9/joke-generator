@@ -28,5 +28,5 @@
     />
     <p>password must be 8 characters long</p>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
 </form>
