@@ -21,14 +21,17 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.authService.loggedInUser().subscribe((data) => {
       this.User = data;
+      this.jokeSort();
+    });
+  }
 
-      this.apiService.getFavoriteJokes().subscribe((data) => {
-        Object.keys(data).map((keys) => {
-          this.delJokeKeys?.push(keys);
-        });
-        Object.values(data).map((joke) => {
-          this.favoriteJokes?.push(joke);
-        });
+  jokeSort() {
+    this.apiService.getFavoriteJokes().subscribe((data) => {
+      Object.keys(data).map((keys) => {
+        this.delJokeKeys?.push(keys);
+      });
+      Object.values(data).map((joke) => {
+        this.favoriteJokes?.push(joke);
       });
     });
   }
@@ -36,8 +39,9 @@ export class ProfileComponent implements OnInit {
   onDelete(delIndex: number) {
     const delKey = this.delJokeKeys[delIndex];
     this.apiService.deleteJoke(delKey).subscribe(() => {
-      this.apiService.getFavoriteJokes().subscribe(() => {
-        console.log("fetch jokes fired")
+      this.apiService.getFavoriteJokes().subscribe((data) => {
+        this.favoriteJokes = [];
+        this.jokeSort();
       });
     });
   }
