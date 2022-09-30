@@ -1,1 +1,16 @@
-{}
+{
+  "hosting": {
+    "public": "dist/dad-joke-machine",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
